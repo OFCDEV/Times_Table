@@ -3,6 +3,7 @@ package com.example.timestable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.SeekBar;
 
@@ -23,8 +24,21 @@ public class MainActivity extends AppCompatActivity {
         //Creating method for seekbar
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                int min = 1;
+                int timesTable;
+
+                if(progress<min){
+                    timesTable = min;
+                    seekBar.setProgress(min);
+                }
+                else{
+                    timesTable = progress;
+                }
+
+                Log.i("SeekBar Value", Integer.toString(timesTable));
+
             }
 
             @Override
